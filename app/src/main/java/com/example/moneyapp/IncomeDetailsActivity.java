@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -145,10 +146,9 @@ public class IncomeDetailsActivity extends AppCompatActivity {
         btn_contributor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getApplicationContext(), Contributor.class);
+                intent.putExtra("EXTRA_INCOME_VALUE", income_value);
                 startActivity(intent);
-
             }});
 
         btn_settings.setOnClickListener(new View.OnClickListener() {
@@ -210,7 +210,7 @@ public class IncomeDetailsActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        Double income_value = intent.getDoubleExtra(MainActivity.INCOME_VALUE, 0);
+        income_value = intent.getDoubleExtra(MainActivity.INCOME_VALUE, 0);
         contributor_flag = intent.getBooleanExtra("EXTRA_CONTRIBUTOR_FLAG", false);
 
         //Defining personBudget as income value
