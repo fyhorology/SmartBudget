@@ -424,7 +424,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="0.1"
             android:text="Save More!"
-            android:onClick="save_more"
+            android:onClick="onSaveMoreClicked"
             />
 
         <Button
@@ -435,7 +435,7 @@
             android:layout_weight="0.1"
             android:layout_marginLeft="50dp"
             android:text="Spend More!"
-            android:onClick="spend_more"
+            android:onClick="onSpendMoreClicked"
             />
 
     </LinearLayout>

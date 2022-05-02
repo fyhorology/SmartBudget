@@ -42,6 +42,8 @@ public class IncomeDetailsActivity extends AppCompatActivity {
     private double income_value;
     public static final String INCOME_VALUE = "income value";
     Boolean contributor_flag = false;
+    private int budgetValue = 1;
+    private Budget budget;
 
     //Defining category Value and Percentage
     TextView foodValue;
@@ -80,11 +82,11 @@ public class IncomeDetailsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intent = getIntent();
-        Double income_value = intent.getDoubleExtra(MainActivity.INCOME_VALUE, 1000);
-        personBudget = new Income(income_value);
-
-        calculateBudget();
+//        Intent intent = getIntent();
+//        Double income_value = intent.getDoubleExtra(MainActivity.INCOME_VALUE, 1000);
+//        personBudget = new Income(income_value, new Budget(budgetValue));
+//
+//        calculateBudget();
     }
 
     //Store value in local files / database ( Store & Retrieve )
@@ -93,9 +95,6 @@ public class IncomeDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_income_details);
 
-        
-        
-        
         //Check authorisation for current account
         auth = FirebaseAuth.getInstance();
 
@@ -215,7 +214,8 @@ public class IncomeDetailsActivity extends AppCompatActivity {
         contributor_flag = intent.getBooleanExtra("EXTRA_CONTRIBUTOR_FLAG", false);
 
         //Defining personBudget as income value
-        personBudget = new Income(income_value);
+        budget = new Budget(budgetValue);
+        personBudget = new Income(income_value, budget);
         if (income_value == 0) {
             incomeText.setText("1000");
         }
@@ -237,14 +237,14 @@ public class IncomeDetailsActivity extends AppCompatActivity {
 
 
         //Display category percentage as text with suffix %, and call back the defined variables from BudgetConfig.java
-        foodPercentage.setText(BudgetConfig.FOOD_BUDGET + getString(R.string.PERCENTAGE));
-        transportPercentage.setText(BudgetConfig.TRANSPORT_BUDGET + getString(R.string.PERCENTAGE));
-        savingsPercentage.setText(BudgetConfig.SAVINGS_BUDGET + getString(R.string.PERCENTAGE));
-        housingPercentage.setText(BudgetConfig.HOUSING_BUDGET + "%");
-        utilitiesPercentage.setText(BudgetConfig.UTILITIES_BUDGET + "%");
-        insurancePercentage.setText(BudgetConfig.INSURANCE_BUDGET + "%");
-        personalPercentage.setText(BudgetConfig.PERSONAL_BUDGET + "%");
-        investmentPercentage.setText(BudgetConfig.INVESTMENT_BUDGET + "%");
+        foodPercentage.setText(budget.getFoodBudget() + getString(R.string.PERCENTAGE));
+        transportPercentage.setText(budget.getTransportBudget() + getString(R.string.PERCENTAGE));
+        savingsPercentage.setText(budget.getSavingsBudget() + getString(R.string.PERCENTAGE));
+        housingPercentage.setText(budget.getHousingBudget() + "%");
+        utilitiesPercentage.setText(budget.getUtilitiesBudget() + "%");
+        insurancePercentage.setText(budget.getInsuranceBudget() + "%");
+        personalPercentage.setText(budget.getPersonalBudget() + "%");
+        investmentPercentage.setText(budget.getInvestmentBudget() + "%");
 
         if (contributor_flag) {
 
@@ -282,13 +282,16 @@ public class IncomeDetailsActivity extends AppCompatActivity {
         displayInteger.setText("" + number);
     }
 
-    /*public void save_more(View view) {
-        budget_id = budget_id - 1;
+    public void onSaveMoreClicked(View view) {
+
 
     }
 
-    public void spend_more(View view) {
-        budget_id = budget_id + 1;
-    }*/
+    public void onSpendMoreClicked(View view) {
+        this.budgetValue = budgetValue + 1;
+        budget.setBudgetValue(budgetValue);
+        personBudget.setNewBudget(budget.getBudgetInstance());
+        calculateBudget();
+    }
 
 }
