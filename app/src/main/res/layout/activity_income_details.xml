@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".IncomeDetailsActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:weightSum="0.1">
+
+        <Button
+            android:id="@+id/btn_contributor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="95dp"
+            android:text="Add Contributor" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:weightSum="0.1">
+
+        <TextView
+            android:id="@+id/myrStatement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Income : RM"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.064" />
+
+        <TextView
+            android:id="@+id/incomeValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.064" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.1" />
+
+        <ImageButton
+            android:id="@+id/settingsicon"
+            android:layout_width="56dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="60dp"
+            app:srcCompat="@drawable/settingspng" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/recommend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="We recommend you to spend wisely as shown below!"
+        android:textSize="18sp" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pie_chart"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        tools:ignore="MissingClass,MissingConstraints"
+        android:layout_gravity="center">
+
+    </com.github.mikephil.charting.charts.PieChart>
+
+    <LinearLayout
+        android:layout_width="402dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp">
+
+
+
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1.5">
+
+
+            <TextView
+                android:id="@+id/food"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Food"></TextView>
+
+            <TextView
+                android:id="@+id/food_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Value"></TextView>
+
+            <TextView
+                android:id="@+id/food_percentage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Percentage %"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1.5">
+
+            <TextView
+                android:id="@+id/transport"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Transport"></TextView>
+
+            <TextView
+                android:id="@+id/transport_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Value"></TextView>
+
+            <TextView
+                android:id="@+id/transport_percentage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Percentage %"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1.5">
+
+            <TextView
+                android:id="@+id/savings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Savings"></TextView>
+
+            <TextView
+                android:id="@+id/savings_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Value"></TextView>
+
+            <TextView
+                android:id="@+id/savings_percentage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Percentage %"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1.5">
+
+
+            <TextView
+                android:id="@+id/housing"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Housing"></TextView>
+
+            <TextView
+                android:id="@+id/housing_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Value"></TextView>
+
+            <TextView
+                android:id="@+id/housing_percentage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Percentage %"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1.5">
+
+
+            <TextView
+                android:id="@+id/utilities"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Utilities"></TextView>
+
+            <TextView
+                android:id="@+id/utilities_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Value"></TextView>
+
+            <TextView
+                android:id="@+id/utilities_percentage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Percentage %"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1.5">
+
+
+            <TextView
+                android:id="@+id/insurance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Insurance"></TextView>
+
+            <TextView
+                android:id="@+id/insurance_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Value"></TextView>
+
+            <TextView
+                android:id="@+id/insurance_percentage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Percentage %"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1.5">
+
+
+            <TextView
+                android:id="@+id/personal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Personal"></TextView>
+
+            <TextView
+                android:id="@+id/personal_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Value"></TextView>
+
+            <TextView
+                android:id="@+id/personal_percentage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Percentage %"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1.5">
+
+
+            <TextView
+                android:id="@+id/investment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Investment"></TextView>
+
+            <TextView
+                android:id="@+id/investment_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Value"></TextView>
+
+            <TextView
+                android:id="@+id/investment_percentage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Percentage %"></TextView>
+        </LinearLayout>
+
+    </LinearLayout><![CDATA[]]>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="0.3">
+
+        <ImageButton
+            android:id="@+id/btn_feedback"
+            android:layout_width="42dp"
+            android:layout_height="53dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/feedbackicon" />
+
+
+        <Button
+            android:id="@+id/btn_signout2"
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+
+
+            android:text="Sign Out" />
+
+        <ImageButton
+            android:id="@+id/plantyicon"
+            android:layout_width="54dp"
+            android:layout_height="56dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="40dp"
+            app:srcCompat="@drawable/planty" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_editincome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="2.5dp"
+        android:text="Edit Income" />
+
+    <LinearLayout
+        android:layout_width="345dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1.5">
+
+        <Button
+            android:id="@+id/btn_savemore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0.1"
+            android:text="Save More!"
+            android:onClick="save_more"
+            />
+
+        <Button
+            android:id="@+id/btn_spendmore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.1"
+            android:layout_marginLeft="50dp"
+            android:text="Spend More!"
+            android:onClick="spend_more"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="345dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1.5">
+
+
+        <Button
+            android:id="@+id/btn_Spend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="70dp"
+            android:layout_weight="0.1"
+            android:text="Spend RM100"
+            android:onClick="increase_spent"
+            />
+
+        <TextView
+            android:id="@+id/text_RM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="70dp"
+            android:layout_weight="0.1"
+            android:text="RM"></TextView>
+
+        <TextView
+            android:id="@+id/spentValue"
+            android:layout_width="63dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="70dp"
+            android:layout_weight="0.3"
+            android:text="0"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
