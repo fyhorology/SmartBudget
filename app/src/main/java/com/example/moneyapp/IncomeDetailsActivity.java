@@ -89,32 +89,13 @@ public class IncomeDetailsActivity extends AppCompatActivity {
         //Check authorisation for current account
         auth = FirebaseAuth.getInstance();
 
+        // fetch and populate data
         bindData();
         calculateBudget();
 
+        // pie chart setup
         pieChart = findViewById(R.id.pie_chart);
-
-        String[] categoryPieChart = {"Food", "Transport", "Savings", "Housing", "Utilities", "Insurance", "Personal", "Investment"};
-        int[] categoryPieChart_weightage = {20, 10, 5, 20, 10, 15, 15, 5};
-
-        ArrayList<PieEntry> pieEntries = new ArrayList<>();
-
-        for (int i = 0; i < categoryPieChart.length; i++) {
-            PieEntry pieEntry = new PieEntry(categoryPieChart_weightage[i], i);
-            pieEntries.add(pieEntry);
-        }
-
-
-        PieDataSet pieDataSet = new PieDataSet(pieEntries, "Budgeting Weightage");
-        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        pieChart.setData(new PieData(pieDataSet));
-        pieChart.animateXY(2000,2000);
-        pieChart.getDescription().setEnabled(false);
-
-        //anyChartView = findViewById(R.id.any_chart_view);
-
-        //setupPieChart();
-
+        populatePieChart(personBudget);
 
         //Finding entity by ID from xml and assigning to variables
         btn_settings = (ImageButton) findViewById(R.id.settingsicon);
@@ -177,6 +158,35 @@ public class IncomeDetailsActivity extends AppCompatActivity {
             }});
     }
 
+    private void populatePieChart(Income personBudget) {
+        String[] categoryPieChart = {"Food", "Transport", "Savings", "Housing", "Utilities", "Insurance", "Personal", "Investment"};
+
+        // convert to integer
+        int foodValue = Math.round(Float.parseFloat(personBudget.getFoodValue()));
+        int transportValue = Math.round(Float.parseFloat(personBudget.getTransportValue()));
+        int savingsValue = Math.round(Float.parseFloat(personBudget.getSavingsValue()));
+        int housingValue = Math.round(Float.parseFloat(personBudget.getHousingValue()));
+        int utitliesValue = Math.round(Float.parseFloat(personBudget.getUtilitiesValue()));
+        int insuranceValue = Math.round(Float.parseFloat(personBudget.getInsuranceValue()));
+        int personalValue = Math.round(Float.parseFloat(personBudget.getPersonalValue()));
+        int investmentValue = Math.round(Float.parseFloat(personBudget.getInvestmentValue()));
+
+        int[] categoryPieChart_weightage = {foodValue, transportValue, savingsValue, housingValue, utitliesValue, insuranceValue, personalValue, investmentValue};
+
+        ArrayList<PieEntry> pieEntries = new ArrayList<>();
+
+        for (int i = 0; i < categoryPieChart.length; i++) {
+            PieEntry pieEntry = new PieEntry(categoryPieChart_weightage[i], i);
+            pieEntries.add(pieEntry);
+        }
+
+
+        PieDataSet pieDataSet = new PieDataSet(pieEntries, "Budgeting Weightage");
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        pieChart.setData(new PieData(pieDataSet));
+        pieChart.animateXY(2000,2000);
+        pieChart.getDescription().setEnabled(false);
+    }
 
     private void bindData() {
         //Assigning category Values and percentage via ID from xml
@@ -235,12 +245,6 @@ public class IncomeDetailsActivity extends AppCompatActivity {
         insurancePercentage.setText(budget.getInsuranceBudget() + "%");
         personalPercentage.setText(budget.getPersonalBudget() + "%");
         investmentPercentage.setText(budget.getInvestmentBudget() + "%");
-
-        if (contributor_flag) {
-
-
-        }
-
     }
 
 
@@ -282,6 +286,7 @@ public class IncomeDetailsActivity extends AppCompatActivity {
         budget.setBudgetValue(budgetValue);
         personBudget.setNewBudget(budget.getBudgetInstance());
         calculateBudget();
+        populatePieChart(personBudget);
 
         // dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
