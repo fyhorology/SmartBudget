@@ -1,26 +1,17 @@
 package com.example.moneyapp;
 
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.anychart.AnyChart;
-import com.anychart.AnyChartView;
-import com.anychart.chart.common.dataentry.DataEntry;
-import com.anychart.chart.common.dataentry.ValueDataEntry;
-import com.anychart.chart.common.listener.Event;
-import com.anychart.chart.common.listener.ListenersInterface;
-import com.anychart.enums.Align;
-import com.anychart.enums.LegendLayout;
-import com.anychart.charts.Pie;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -30,7 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class IncomeDetailsActivity extends AppCompatActivity {
 
@@ -292,6 +282,19 @@ public class IncomeDetailsActivity extends AppCompatActivity {
         budget.setBudgetValue(budgetValue);
         personBudget.setNewBudget(budget.getBudgetInstance());
         calculateBudget();
+
+        // dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.DIALOG_MESSAGE)
+                .setCancelable(false)
+                .setPositiveButton(getApplicationContext().getString(R.string.GOT_IT_MESSAGE), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.NEW_BUDGET_TOAST), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        builder.create().show();
     }
 
 }

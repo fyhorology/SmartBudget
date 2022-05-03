@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Money App</string>
     <string name="income_submitted">Income submitted</string>
-    <string name="MYR">RM</string>\
+    <string name="MYR">RM</string>
     <string name="PERCENTAGE">%</string>
+    <string name="DIALOG_MESSAGE">You have increased your spending!\n Here\'s your new calculation.</string>
+    <string name="GOT_IT_MESSAGE">Got it!</string>
+    <string name="NEW_BUDGET_TOAST">New budget is calculated</string>
 </resources>
